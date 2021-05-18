@@ -1,0 +1,12 @@
+.add-new-chat {
+  font-size: 12px;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 5px;
+}
+.close-add-chat {
+  margin-top: 5px;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 5px;
+}

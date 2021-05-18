@@ -1,0 +1,31 @@
+.chat-name {
+  display: block;
+  margin: unset;
+  margin-bottom: 5px;
+  color: white;
+  text-decoration: underline;
+  font-size: 40px;
+}
+.add-user {
+  font-size: 12px;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 5px;
+}
+.close-add-user {
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+.send-message {
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(24, 23, 23);
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  font-size: 1.5rem;
+}

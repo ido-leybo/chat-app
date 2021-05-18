@@ -1,0 +1,14 @@
+.add-input {
+  margin-top: 5px;
+  margin-bottom: 8px;
+
+  height: 50px;
+  border-radius: 15px;
+  background-color: #054572;
+}
+.add-button {
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 5px;
+}

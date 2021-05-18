@@ -1,0 +1,8 @@
+.sign_out {
+  width: fit-content;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.sign_out:hover {
+  color: rgb(151, 9, 9);
+}
