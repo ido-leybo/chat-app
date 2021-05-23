@@ -10,9 +10,9 @@ function ChatRoom({ chat }) {
   const messagesRef = firebase.firestore().collection("messages");
   const messageQuery = messagesRef
     .where("chat_id", "==", chat[0].chat_id)
-    // .orderBy("createdAt")
+    .orderBy("createdAt", "desc")
     .limit(25);
-  const [messages] = useCollectionData(messageQuery);
+  const [messages, loading, queryError] = useCollectionData(messageQuery);
   const [formValue, setFormValue] = useState("");
   const dummy = useRef();
 
@@ -50,12 +50,12 @@ function ChatRoom({ chat }) {
           </button>
         )}
       </div>
-      <main>
+      <main className="messages-container">
+        <div ref={dummy}></div>
         {messages &&
           messages.map((msg) => (
             <ChatMessage key={msg.createdAt} message={msg} />
           ))}
-        <div ref={dummy}></div>
       </main>
       <form className="send-message" onSubmit={sendMessage}>
         <input

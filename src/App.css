@@ -41,6 +41,9 @@ main {
   display: flex;
   flex-direction: column;
 }
+.messages-container {
+  flex-direction: column-reverse;
+}
 
 main::-webkit-scrollbar {
   width: 0.25rem;
@@ -90,7 +93,7 @@ input {
 }
 
 button {
-  background-color: #282c34; /* Green */
+  background-color: #282c34;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -108,13 +111,6 @@ button:disabled {
 button:hover {
   color: sandybrown;
 }
-
-/* .sign-in {
-  color: #282c34;
-  background: white;
-  max-width: 400px;
-  margin: 0 auto;
-} */
 
 ul,
 li {
@@ -163,82 +159,8 @@ img {
   font-weight: bold;
   margin-bottom: 20px;
 }
-/* .chat-button {
-  margin-top: 8px;
-} 
- .add-new-chat {
-  font-size: 12px;
-  font-weight: bold;
-  width: fit-content;
-  border-radius: 5px;
-} 
- .add-user {
-  font-size: 12px;
-  font-weight: bold;
-  width: fit-content;
-  border-radius: 5px;
-} 
- .close-add-user {
-  font-size: 18px;
-  font-weight: bold;
-  width: fit-content;
-  border-radius: 10px;
-  margin-left: 5px;
-} 
-.add-input {
-  margin-top: 5px;
-  margin-bottom: 8px;
-  width: 200px;
-  height: 50px;
-  border-radius: 5px;
-  background-color: #054572;
-} */
+
 input {
   background-color: #054572;
   padding: 5px;
 }
-/* .add-button {
-  font-size: 12px;
-  font-weight: bold;
-  width: fit-content;
-  border-radius: 5px;
-} 
- .close-add-chat {
-  margin-top: 5px;
-  font-weight: bold;
-  width: fit-content;
-  border-radius: 5px;
-} 
- .chat-name {
-  display: block;
-  margin: unset;
-  margin-bottom: 5px;
-  color: white;
-  text-decoration: underline;
-  font-size: 40px;
-} 
- .label-fields {
-  color: white;
-  padding: 10px;
-} 
-.form-input {
-  width: 50%;
-  margin-left: 5px;
-  border-radius: 5px;
-  background-color: rgb(112, 128, 180);
-} 
-.loggin-btn {
-  border-radius: 5px;
-} 
- .sign_out {
-  width: fit-content;
-  border-radius: 5px;
-  font-size: 12px;
-}
-.sign_out:hover {
-  color: rgb(151, 9, 9);
-} 
- .sign-btn {
-  margin: 10px;
-  border-radius: 20px;
-} */

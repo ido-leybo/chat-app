@@ -2,6 +2,7 @@ import "../styles/SignIn.css";
 import firebase from "firebase";
 import "firebase/database";
 import "firebase/auth";
+import "firebase/storage";
 import { useRef, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import facebook_icon from "../images/facebook_icon.jpg";
@@ -12,8 +13,7 @@ function SignIn() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [signUp, setSignUp] = useState(false);
-  const userRef = firebase.firestore().collection("users");
-  const [users] = useCollectionData(userRef);
+  const [imageUrl, setImageUrl] = useState();
 
   const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -29,16 +29,19 @@ function SignIn() {
   };
 
   const addUser = () => {
-    const user = users.find(
-      ({ uid }) => uid === firebase.auth().currentUser.uid
-    );
-
-    if (!user) {
-      userRef.add({
+    const userRef = firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid);
+    userRef.set(
+      {
         uid: firebase.auth().currentUser.uid,
         profileImg: firebase.auth().currentUser.photoURL,
-      });
-    }
+      },
+      {
+        merge: true,
+      }
+    );
   };
 
   // const sendEmail = async (email) => {
@@ -61,10 +64,15 @@ function SignIn() {
   // };
 
   const signUpWithEmail = async (email, password) => {
+    console.log(imageUrl);
     await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        firebase.auth().currentUser.updateProfile({ photoURL: imageUrl });
+      })
       .catch((e) => console.log(e));
+    addUser();
     setSignUp(false);
   };
 
@@ -78,7 +86,6 @@ function SignIn() {
       .signInWithEmailAndPassword(email, password)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
-    addUser();
   };
 
   const goToSignUp = () => {
@@ -92,13 +99,17 @@ function SignIn() {
       </header>
       <div>
         {signUp ? (
-          <SignUp signUpWithEmail={signUpWithEmail} />
+          <SignUp signUpWithEmail={signUpWithEmail} setImageUrl={setImageUrl} />
         ) : (
           <form
             className="loggin-form"
-            onSubmit={() =>
-              signInWithEmail(emailRef.current.value, passwordRef.current.value)
-            }
+            onSubmit={(e) => {
+              e.preventDefault();
+              signInWithEmail(
+                emailRef.current.value,
+                passwordRef.current.value
+              );
+            }}
           >
             <label className="label-fields">
               Email:
